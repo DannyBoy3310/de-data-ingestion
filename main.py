@@ -10,5 +10,4 @@ if __name__ == "__main__":
     spark = create_spark_session(arguments)
     dataframe = read_dataframe_as_csv(spark,arguments)
     dataframe.show(5, truncate = False)
-    logging.info("Closing Spark Session")
-
+    logging.info("Closing Spark Session !!!")
