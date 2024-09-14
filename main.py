@@ -1,13 +1,14 @@
 from ingestion.extraction.read_dataframe_as_csv import read_dataframe_as_csv
+from ingestion.extraction.saveToTarget import save_to_target
 from ingestion.source.create_spark_session import create_spark_session
-from ingestion.utils.load_arguements import load_arguments
-import logging
+from ingestion.utils.load_arguments import load_arguments
+from ingestion.utils.get_logger import Logger
 
 
 if __name__ == "__main__":
     arguments = load_arguments()
-    logging.info(f"Creating Spark Session for {arguments.entity_name}")
-    spark = create_spark_session(arguments)
-    dataframe = read_dataframe_as_csv(spark,arguments)
-    dataframe.show(5, truncate = False)
-    logging.info("Closing Spark Session !!!")
+    logger = Logger()
+    spark = create_spark_session(arguments, logger)
+    dataframe = read_dataframe_as_csv(spark,arguments,logger)
+    save_to_target(dataframe,arguments,logger)
+    logger.spark_session('Closing', arguments)
