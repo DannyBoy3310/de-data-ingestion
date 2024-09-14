@@ -24,7 +24,7 @@ def create_spark_session(arguments, logger):
 
     spark._jsc.hadoopConfiguration().set(
         "google.cloud.auth.service.account.json.keyfile",
-        "/Users/ranjithm/PycharmProjects/Daniel/de_ingestion/de-data-ingestion/ingestion/env/leafy-stock-435514-e0-83d62a88be90.json",
+        "/Users/ranjithm/PycharmProjects/Daniel/de_ingestion/de-data-ingestion/security/leafy-stock-435514-e0-83d62a88be90.json"
     )
 
     logger.spark_session('Initiated', arguments)
