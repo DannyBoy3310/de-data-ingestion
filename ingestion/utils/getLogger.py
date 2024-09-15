@@ -3,7 +3,7 @@ import logging
 
 class Logger:
     def __init__(self):
-        logging.basicConfig(level=logging.INFO,format='%(asctime)s -- %(message)s')
+        logging.basicConfig(level=logging.INFO, format="%(asctime)s -- %(message)s")
         self.logger = logging.getLogger("logger")
         self.logger.setLevel(logging.INFO)
 
@@ -13,6 +13,5 @@ class Logger:
     def message(self, msg):
         self.logger.info(msg)
 
-    def start_func(self, function, mode):
+    def func_call(self, function, mode):
         self.logger.info(f"{function} {mode} !!! ")
-

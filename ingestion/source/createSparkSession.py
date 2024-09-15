@@ -1,9 +1,10 @@
 from pyspark.sql import SparkSession
 import inspect
 
+
 def create_spark_session(arguments, logger):
 
-    logger.start_func(inspect.stack()[0][3], 'initiated')
+    logger.func_call(inspect.stack()[0][3], "initiated")
     spark = (
         SparkSession.builder.appName(f"Ingestion_{arguments.entity_name}")
         .config(
@@ -24,10 +25,10 @@ def create_spark_session(arguments, logger):
 
     spark._jsc.hadoopConfiguration().set(
         "google.cloud.auth.service.account.json.keyfile",
-        "/Users/ranjithm/PycharmProjects/Daniel/de_ingestion/de-data-ingestion/security/leafy-stock-435514-e0-83d62a88be90.json"
+        "/Users/ranjithm/PycharmProjects/Daniel/de_ingestion/de-data-ingestion/security/leafy-stock-435514-e0-83d62a88be90.json",
     )
 
-    logger.spark_session('Initiated', arguments)
-    logger.start_func(inspect.stack()[0][3], 'Completed !!')
+    logger.spark_session("Initiated", arguments)
+    logger.func_call(inspect.stack()[0][3], "Completed !!")
 
     return spark
