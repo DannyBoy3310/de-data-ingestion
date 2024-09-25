@@ -30,7 +30,7 @@ def read_ingestion_metadata(
         == lit(arguments.entity_name.upper().strip())
     )
 
-    if type.lower().strip() == 'ingestion':
+    if type.lower().strip() == "ingestion":
         metadata_data = metadata_data.first()
     logger.func_call(inspect.stack()[0][3], "Completed")
 

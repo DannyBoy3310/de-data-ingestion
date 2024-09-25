@@ -1,5 +1,7 @@
 from argparse import ArgumentParser, Namespace
 
+from pkg_resources import require
+
 
 def load_arguments():
 
@@ -64,6 +66,25 @@ def load_arguments():
         dest="run_mode",
         required=True,
     )
+    args.add_argument(
+        "--audit-username",
+        dest="audit_username",
+        required=True,
+    )
+    args.add_argument(
+        "--audit-password",
+        dest="audit_password",
+        required=True,
+    )
+    args.add_argument(
+        "--audit-port",
+        dest="audit_port",
+        required=True,
+    )
+    args.add_argument("--audit-schema", dest="audit_schema", required=True)
+    args.add_argument("--audit-dbname", dest="audit_dbname", required=True)
+    args.add_argument("--audit-host", dest="audit_host", required=True)
+    args.add_argument("--audit-tablename", dest="audit_tablename", required=True)
     args.add_argument(
         "--execution-date",
         dest="execution_date",

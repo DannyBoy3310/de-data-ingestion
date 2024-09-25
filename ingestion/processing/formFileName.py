@@ -28,8 +28,7 @@ def form_file_name(logger: Logger, arguments: Namespace, ingestion_metadata: Row
         if key in date_regex:
             date_regex = date_regex.replace(key, value)
 
-    new_date_format = date_regex.replace("__","")
-
+    new_date_format = date_regex.replace("__", "")
 
     file_date = datetime.strptime(arguments.execution_date, "%Y-%m-%d").strftime(
         new_date_format
@@ -39,7 +38,9 @@ def form_file_name(logger: Logger, arguments: Namespace, ingestion_metadata: Row
 
     file_name = file_naming_convention.replace(old_date_format, file_date)
 
-    logger.message(f"The Source File Name : {file_name}{ingestion_metadata[FrameworkConstants.IngestionConstants.FILE_FORMAT.value].lower()}")
+    logger.message(
+        f"The Source File Name : {file_name}{ingestion_metadata[FrameworkConstants.IngestionConstants.FILE_FORMAT.value].lower()}"
+    )
 
     logger.func_call(inspect.stack()[0][3], "Completed")
 

@@ -10,8 +10,8 @@ class FrameworkConstants:
         FILE_NAMING_CONVENTION = "FILE_NAMING_CONVENTION"
         FREQUENCY = "FREQUENCY"
         FILE_FORMAT = "FILE_FORMAT"
-        STAGING = 'STAGING'
-        PRIMARY_KEY = 'PRIMARY_KEY'
+        STAGING = "STAGING"
+        PRIMARY_KEY = "PRIMARY_KEY"
 
     class EntityConstants(Enum):
         ENTITY_NAME = "ENTITY_NAME"
@@ -37,5 +37,3 @@ class FrameworkConstants:
             "DD": "%d",
             "dd": "%d",
         }
-
-

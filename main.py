@@ -9,17 +9,24 @@ from ingestion.utils.getLogger import Logger
 
 
 def ingest_data():
-    ingestion_metadata,entity_metadata = read_ingestion_metadata(spark, arguments, logger, 'ingestion'),read_ingestion_metadata(spark, arguments,logger,type='entity')
-    file_name = form_file_name(logger,arguments,ingestion_metadata)
-    dataframe = read_source_data(spark,file_name,arguments,logger,ingestion_metadata)
-    dataframe = encrypt_pii(dataframe,arguments,logger,ingestion_metadata,entity_metadata)
-    dataframe.show(1, truncate = False)
+    ingestion_metadata, entity_metadata = read_ingestion_metadata(
+        spark, arguments, logger, "ingestion"
+    ), read_ingestion_metadata(spark, arguments, logger, type="entity")
+    file_name = form_file_name(logger, arguments, ingestion_metadata)
+    dataframe = read_source_data(
+        spark, file_name, arguments, logger, ingestion_metadata
+    )
+    dataframe = encrypt_pii(
+        dataframe, arguments, logger, ingestion_metadata, entity_metadata
+    )
+    dataframe.show(5, truncate=False)
     # encrypt_pii(dataframe,arguments,logger,ingestion_metadata)
     save_to_target(dataframe, arguments, logger)
+
 
 if __name__ == "__main__":
     arguments = load_arguments()
     logger = Logger()
     spark = create_spark_session(arguments, logger)
     ingest_data()
-    logger.spark_session('Closing', arguments)
+    logger.spark_session("Closing", arguments)

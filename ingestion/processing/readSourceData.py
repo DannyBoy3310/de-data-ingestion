@@ -16,13 +16,20 @@ def read_source_data(
 
     logger.func_call(inspect.stack()[0][3], mode="initiated")
 
-    if ingestion_metadata[FrameworkConstants.IngestionConstants.FILE_FORMAT.value].lower() == "csv":
+    if (
+        ingestion_metadata[
+            FrameworkConstants.IngestionConstants.FILE_FORMAT.value
+        ].lower()
+        == "csv"
+    ):
         dataframe = spark.read.csv(
             f"gs://{arguments.source_bucket}/{arguments.source_dir}/{file_name}csv",
             header=True,
         )
     elif (
-        ingestion_metadata[FrameworkConstants.IngestionConstants.FILE_FORMAT.value].lower()
+        ingestion_metadata[
+            FrameworkConstants.IngestionConstants.FILE_FORMAT.value
+        ].lower()
         == "json"
     ):
         dataframe = spark.read.json(
@@ -30,7 +37,9 @@ def read_source_data(
             multiLine=True,
         )
     elif (
-        ingestion_metadata[FrameworkConstants.IngestionConstants.FILE_FORMAT.value].lower()
+        ingestion_metadata[
+            FrameworkConstants.IngestionConstants.FILE_FORMAT.value
+        ].lower()
         == "parquet"
     ):
         dataframe = spark.read.parquet(
