@@ -1,0 +1,5 @@
+pyspark
+gcloud
+psycopg2-binary
+cx-Oracle
+mysql-connector-python

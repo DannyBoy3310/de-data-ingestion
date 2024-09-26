@@ -1,0 +1,7 @@
+security/
+.DS_Store
+*.log
+spark_cmd.txt
+jars/
+GOOGLE-CLOUD.png
+README.md
